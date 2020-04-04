@@ -2,6 +2,8 @@ import os
 from django.conf import settings
 from django.core.exceptions import AppRegistryNotReady
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DEFAULT_CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG',
                          {'theme': "simple", 'relative_urls': False})
 
@@ -28,3 +30,7 @@ else:
     JS_ROOT = getattr(settings, 'TINYMCE_JS_ROOT', os.path.join(settings.MEDIA_ROOT, 'js/tiny_mce'))
 
 JS_BASE_URL = JS_URL[:JS_URL.rfind('/')]
+
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -25,7 +25,7 @@ SECRET_KEY = 'rq!y(pai2=*0v%4vk7oly8i_))v@7_-jcu#53^+=*4cuygj50l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vedodz.pythonanywhere.com']
 
 
 # Application definition
@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/home/vedodz/vedodz.pythonanywhere.com/static'
+
 MEDIA_URL = '/media/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR,'static')
@@ -132,7 +134,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 TINYMCE_DEFAULT_CONFIG = {
-   
+
     'theme': "advanced",
 
-} 
+}
