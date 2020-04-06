@@ -37,25 +37,21 @@
 			</div>
 		</div>
 	</nav>
-	
-	<div class="container my-4">
-		<div class="card-columns">
-		{% for articulo in ultimos_articulos %}
-			<div class="card">
-				{% if articulo.imagen %}
-					<img src="{{ articulo.imagen.url }}" class="card-img-top">
-				{% endif %}
-				<div class="card-body">
-					<h5 class="card-title"><a href="{% url 'blog:detail' articulo.id %}">{{ articulo.titulo }}</a></h5>		
+
+
+	<div class="container my-5">
+		{% for tablero in tablas_canvan %}
+			<div class="tarjeta-tablero">
+				<div class="nombre-tarjeta-tablero">
+					<a href="{% url 'canvan:detail' tablero.id%}">{{ tablero.nombre }}</a>
+					{{ tablero.fecha_ultima_modificacion }}	
 				</div>
-				<div class="card-footer">
-					<smal class="text-muted">pulicado el {{ articulo.fecha_publicacion  }} por {{ articulo.autor }}  </smal>
-			 	</div>
+				<div class="cuerpo-tarjeta-tablero">
+					{{ tablero.descripcion }}
+				</div>
 			</div>
 		{% endfor %}
-		</div>
 	</div>
-
 
 	{% bootstrap_javascript jquery='full' %}
 </body>

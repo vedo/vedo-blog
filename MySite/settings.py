@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost','vedodz.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'canvan.apps.CanvanConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -37,25 +37,15 @@
 			</div>
 		</div>
 	</nav>
-	
-	<div class="container my-4">
-		<div class="card-columns">
-		{% for articulo in ultimos_articulos %}
-			<div class="card">
-				{% if articulo.imagen %}
-					<img src="{{ articulo.imagen.url }}" class="card-img-top">
-				{% endif %}
-				<div class="card-body">
-					<h5 class="card-title"><a href="{% url 'blog:detail' articulo.id %}">{{ articulo.titulo }}</a></h5>		
-				</div>
-				<div class="card-footer">
-					<smal class="text-muted">pulicado el {{ articulo.fecha_publicacion  }} por {{ articulo.autor }}  </smal>
-			 	</div>
-			</div>
-		{% endfor %}
-		</div>
-	</div>
 
+	<div class="container-fluid my-5">
+		<h1> {{ tablero.nombre }} </h1>
+		<p> Ultima modificación el {{ tablero.fecha_ultima_modificacion }}</p>
+
+		{% for columna in tablero.columna.objects.all() %}
+			<p>Hola</p>
+		{% endfor %}
+	</div>
 
 	{% bootstrap_javascript jquery='full' %}
 </body>

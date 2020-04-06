@@ -10,8 +10,8 @@ class IndexView (generic.ListView):
 	context_object_name = 'ultimos_articulos'
 
 	def get_queryset ( self ):
-		return Articulo.objects.order_by('-fecha_publicacion')[:7]
+		return Articulo.objects.order_by('-fecha_publicacion')
 
 class DetailView (generic.DetailView):
-	model = Articulo
-	template_name = 'blog/detail.html'
+		model = Articulo
+		template_name = 'blog/detail.html'
