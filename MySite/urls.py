@@ -19,10 +19,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 # from django.conf.urls import url
 
+from . import views
+
+app_name = 'mainApp'
+
 urlpatterns = [
-	path('', include('blog.urls')),
-	path('blog/', include('blog.urls')),
-    path('admin/', admin.site.urls),
+	path('', views.mainPage, name='mainPage' ),
+	path('blog/', include('blog.urls') ),
+    path('canvan/', include('canvan.urls') ),
+    path('admin/', admin.site.urls ),
     path('tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

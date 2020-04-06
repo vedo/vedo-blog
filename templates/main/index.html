@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+		<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>Document</title>
@@ -11,7 +11,6 @@
 	{% bootstrap_css %}
 	
 	<link rel="stylesheet" href="{% static 'css/index.css' %}">
-
 </head>
 <body>
 	
@@ -33,24 +32,7 @@
 			</ul>
 		</div>
 	</nav>
-	
-	<div class="container my-4">
-		<div class="card-columns">
-		{% for articulo in ultimos_articulos %}
-			<div class="card">
-				{% if articulo.imagen %}
-					<img src="{{ articulo.imagen.url }}" class="card-img-top">
-				{% endif %}
-				<div class="card-body">
-					<h5 class="card-title"><a href="{% url 'blog:detail' articulo.id %}">{{ articulo.titulo }}</a></h5>		
-				</div>
-				<div class="card-footer">
-					<smal class="text-muted">pulicado el {{ articulo.fecha_publicacion  }} por {{ articulo.autor }}  </smal>
-			 	</div>
-			</div>
-		{% endfor %}
-		</div>
-	</div>
+
 
 
 	{% bootstrap_javascript jquery='full' %}

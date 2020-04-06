@@ -25,7 +25,7 @@ SECRET_KEY = 'rq!y(pai2=*0v%4vk7oly8i_))v@7_-jcu#53^+=*4cuygj50l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vedodz.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost','vedodz.pythonanywhere.com']
 
 
 # Application definition
@@ -134,7 +134,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 TINYMCE_DEFAULT_CONFIG = {
-
-    'theme': "advanced",
-
+    'theme' : 'advanced',
+    'theme_advanced_toolbar_location' : 'top',
+    'theme_advanced_toolbar_align': 'left',
+    'paste_text_sticky': True,
+    'paste_text_sticky_default' : True,
+    'valid_styles' : 'font-weight,font-style,text-decoration',
+    'height' : 400,
 }
