@@ -10,7 +10,7 @@
 	{% load bootstrap4 %}
 	{% bootstrap_css %}
 	
-	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'css/canvan_index.css' %}">
 
 </head>
 <body>
@@ -39,18 +39,21 @@
 	</nav>
 
 
-	<div class="container my-5">
+	<div class="container my-5 boder">
+		<h1> Tableros </h1>
+
 		{% for tablero in tablas_canvan %}
 			<div class="tarjeta-tablero">
-				<div class="nombre-tarjeta-tablero">
+				<div class="titulo-tarjeta-tablero">
 					<a href="{% url 'canvan:detail' tablero.id%}">{{ tablero.nombre }}</a>
-					{{ tablero.fecha_ultima_modificacion }}	
+					modificado por última vez el {{ tablero.fecha_ultima_modificacion }}	
 				</div>
 				<div class="cuerpo-tarjeta-tablero">
 					{{ tablero.descripcion }}
 				</div>
 			</div>
 		{% endfor %}
+
 	</div>
 
 	{% bootstrap_javascript jquery='full' %}

@@ -1,0 +1,19 @@
+/*canvan static */
+
+
+.tarjeta-tablero{
+	border: 1px solid #cecece;
+	border-radius: 20px;
+	margin: 20px 0px;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-tarjeta-tablero{
+	border-bottom: 1px solid #cecece;
+	padding: 15px 20px;
+	margin: 0;
+}
+
+.cuerpo-tarjeta-tablero{
+	padding: 15px 20px;
+}

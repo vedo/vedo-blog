@@ -10,7 +10,7 @@
 	{% load bootstrap4 %}
 	{% bootstrap_css %}
 	
-	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'css/canvan_detail.css' %}">
 
 </head>
 <body>
@@ -38,13 +38,33 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid my-5">
-		<h1> {{ tablero.nombre }} </h1>
-		<p> Ultima modificación el {{ tablero.fecha_ultima_modificacion }}</p>
+	<div class="container-fluid contenedor-cuerpo">
+		
+		<div class="container-fluid my-3">
+			<h1> {{ tablero.nombre }} </h1>
+			<p> Ultima modificación el {{ tablero.fecha_ultima_modificacion }}</p>
+		</div>
 
-		{% for columna in tablero.columna.objects.all() %}
-			<p>Hola</p>
-		{% endfor %}
+		<div class="contenedor-tablero">
+			{% for columna, lista_tarjetas in lista_columna_tarjetas %}	
+				<div class="columna">
+					<h3>{{ columna.nombre }}</h3>
+
+					{% for tarjeta in lista_tarjetas %}
+						<div class="tarjeta">
+							{{ tarjeta.nombre }}
+							{% if tarjeta.descripcion %}
+								<a href="#">desc</a>
+							{% endif %}
+						</div>
+					{% endfor %}
+					<button type="button" class="btn btn-light">Agregar tarjetas</button>
+				</div>
+			{% endfor %}
+			
+			<button type="button" class="btn btn-light">Agregar columna</button>
+			
+		</div>
 	</div>
 
 	{% bootstrap_javascript jquery='full' %}
