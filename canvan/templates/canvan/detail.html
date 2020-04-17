@@ -58,7 +58,11 @@
 							{% endif %}
 						</div>
 					{% endfor %}
-					<button type="button" class="btn btn-light">Agregar tarjetas</button>
+					<form action="" method="POST">
+						{{ formulario.nombre }}
+						<input type="submit" name="Agregar tarjeta">
+					</form>
+					<button type="button" class="btn btn-light">Agregar tarjeta</button>
 				</div>
 			{% endfor %}
 			
