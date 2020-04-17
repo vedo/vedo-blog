@@ -11,7 +11,9 @@
 	{% bootstrap_css %}
 	
 	<link rel="stylesheet" href="{% static 'css/canvan_detail.css' %}">
-
+	
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
 </head>
 <body>
 	
@@ -46,31 +48,39 @@
 		</div>
 
 		<div class="contenedor-tablero">
-			{% for columna, lista_tarjetas in lista_columna_tarjetas %}	
+			{% for columna in tablero.columna_set.all %}	
 				<div class="columna">
 					<h3>{{ columna.nombre }}</h3>
 
-					{% for tarjeta in lista_tarjetas %}
-						<div class="tarjeta">
+					{% for tarjeta in columna.tarjeta_set.all %}
+						<div class="tarjeta" draggable="true">
 							{{ tarjeta.nombre }}
 							{% if tarjeta.descripcion %}
 								<a href="#">desc</a>
 							{% endif %}
 						</div>
-					{% endfor %}
-					<form action="" method="POST">
-						{{ formulario.nombre }}
-						<input type="submit" name="Agregar tarjeta">
-					</form>
-					<button type="button" class="btn btn-light">Agregar tarjeta</button>
+                    {% endfor %}
+                    
+					<form method="POST" action="{% url 'canvan:detail' tablero.id %}">	
+						{% csrf_token %}
+						<input type="hidden" name="columna" value="{{ columna.id }}">
+						<input type="text" name="nombre">
+						<button type="submit" class="btn btn-light">Agregar tarjeta</button>
+                    </form>
 				</div>
 			{% endfor %}
 			
-			<button type="button" class="btn btn-light">Agregar columna</button>
-			
+			<form method="POST" action="{% url 'canvan:detail' tablero.id %}">	
+				{% csrf_token %}
+				<input type="hidden" name="columna" value="{{ columna.id }}">
+				<input type="text" name="nombre">
+				<button type="submit" class="btn btn-light">Agregar columna</button>
+			</form>
+
 		</div>
 	</div>
 
 	{% bootstrap_javascript jquery='full' %}
+	<script type="text/javascript" src="{% static 'js/canvan.js' %}"></script>
 </body>
 </html>

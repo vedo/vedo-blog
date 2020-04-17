@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
-from django.http import Http404
+from django.http import Http404, JsonResponse
 
 from .models import Tablero, Columna, Tarjeta
 from .forms import FormularioTarjeta
@@ -14,6 +14,7 @@ class IndexView ( generic.ListView ):
 
 
 class DetailView ( 	generic.DetailView ):
+
 	model = Tablero
 	template_name = 'canvan/detail.html'
 
@@ -32,20 +33,21 @@ class DetailView ( 	generic.DetailView ):
 		return context
 
 
-def detalleTablero( request, id_tablero ):
+def detalleTablero( request, id_tablero):
+	tablero = Tablero.objects.get(pk = id_tablero)
 
-	try:
-		tablero = Tablero.objects.get(pk = id_tablero)
-		
-		if request.method == 'POST':
-			formulario = FormularioTarjeta(reques.POST)
-			if formulario.is_valid():
-				formulario.save()
-			return redirect('detail ')
+	if request.method == 'POST':
+		columna = Columna.objects.get(pk = request.POST['columna'])	
+		tarjeta = Tarjeta(nombre = request.POST['nombre'], columna = columna)
+		tarjeta.save()
 
-	except Tablero.DoesNotExist:
-		raise Http404("El tablero no existe")
-
+	context = {
+		'tablero': tablero,
+	}
 	return render(request, 'canvan/detail.html', context)
+
+
+def funcionPrueba( request ):
+	return JsonResponse({'result': "Hola JSON"})
 
 	

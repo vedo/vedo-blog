@@ -7,4 +7,4 @@ class FormularioTarjeta ( forms.ModelForm ):
 
 	class Meta:
 		model = Tarjeta
-		fields = '__all__'
+		fields = ["nombre"]
