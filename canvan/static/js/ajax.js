@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/* $(document).ready(function() {
 	var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 	$.ajax({
 		method: 'POST',
@@ -6,7 +6,8 @@ $(document).ready(function() {
 		headers: {"X-CSRFToken": csrftoken},
 		data: {'Valor': 5},
 		success: function(response){
-			console.log("exito")
+			console.log(response.Result);
 		}
 	});
 });
+ */

@@ -46,6 +46,19 @@ for ( let i = 0; i < columnas.length; i++ ){
 
 	columna.addEventListener('drop', function(){
 		this.append(draggedItem);
+		var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+		$.ajax({
+			method: 'POST',
+			url: '/canvan/actualizarColumna/',
+			headers: {"X-CSRFToken": csrftoken},
+			data: {
+				'id_tarjeta': draggedItem.id,
+				'id_columna': columna.id,
+			},
+			success: function(response){
+				console.log(response.respuesta);
+			}
+		});
 	});
 }
 

@@ -49,11 +49,11 @@
 
 		<div class="contenedor-tablero">
 			{% for columna in tablero.columna_set.all %}	
-				<div class="columna">
+				<div class="columna" id="{{ columna.id }}">
 					<h3>{{ columna.nombre }}</h3>
 
 					{% for tarjeta in columna.tarjeta_set.all %}
-						<div class="tarjeta" draggable="true">
+						<div class="tarjeta" draggable="true" id="{{ tarjeta.id }}">
 							{{ tarjeta.nombre }}
 							{% if tarjeta.descripcion %}
 								<a href="#">desc</a>

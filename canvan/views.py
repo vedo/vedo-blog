@@ -45,9 +45,3 @@ def detalleTablero( request, id_tablero):
 		'tablero': tablero,
 	}
 	return render(request, 'canvan/detail.html', context)
-
-
-def funcionPrueba( request ):
-	return JsonResponse({'result': "Hola JSON"})
-
-	
