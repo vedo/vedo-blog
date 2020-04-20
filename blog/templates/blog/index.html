@@ -1,62 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'canvan/base.html' %}
+{% load static%}
 
-	<title>Document</title>
-
-	{% load static%}
-	{% load bootstrap4 %}
-	{% bootstrap_css %}
-	
+{% block estilo %}
 	<link rel="stylesheet" href="{% static 'css/blog_style.css' %}">
+{% endblock estilo %}
 
-</head>
-<body>
-	
-	<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-		<div class="container">
-			<a href="{% url 'mainPage' %}" class="navbar-brand">APPS</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'mainPage' %}">Home<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'blog:index' %}">Blog<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'canvan:index' %}">Canvan<span class="sr-only">(current)</span></a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	
+{% block contenido %}	
 	<div class="container my-4">
 		<div class="card-columns">
-		{% for articulo in ultimos_articulos %}
-			<div class="card">
-				{% if articulo.imagen %}
-					<img src="{{ articulo.imagen.url }}" class="card-img-top">
-				{% endif %}
-				<div class="card-body">
-					<h5 class="card-title"><a href="{% url 'blog:detail' articulo.id %}">{{ articulo.titulo }}</a></h5>		
+			{% for articulo in ultimos_articulos %}
+				<div class="card">
+					{% if articulo.imagen %}
+						<img src="{{ articulo.imagen.url }}" class="card-img-top">
+					{% endif %}
+					<div class="card-body">
+						<h5 class="card-title"><a href="{% url 'blog:detail' articulo.id %}">{{ articulo.titulo }}</a></h5>		
+					</div>
+					<div class="card-footer">
+						<smal class="text-muted">pulicado el {{ articulo.fecha_publicacion  }} por {{ articulo.autor }}  </smal>
+					</div>
 				</div>
-				<div class="card-footer">
-					<smal class="text-muted">pulicado el {{ articulo.fecha_publicacion  }} por {{ articulo.autor }}  </smal>
-			 	</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
 		</div>
 	</div>
-
-
-	{% bootstrap_javascript jquery='full' %}
-</body>
-</html>
+{% endblock contenido %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Document</title>
+
+	{% load bootstrap4 %}
+	{% bootstrap_css %}
+    {% load static%}
+
+    {% block estilo %}{% endblock %}
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+		<div class="container">
+			<a href="{% url 'mainPage' %}" class="navbar-brand">APPS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'blog:index' %}">Blog<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'canvan:index' %}">Canvan<span class="sr-only">(current)</span></a>
+					</li>
+					<!-- <li class="nav-item active">
+						<a class="nav-link" href="{% url 'users:register-form' %}">User Register<span class="sr-only">(current)</span></a>
+					</li> -->
+				</ul>
+			</div>
+			<div class="navbar-nav">
+				<a href="#" class="nav-item nav-link">Login</a>
+				<a href="{% url 'users:register-form' %}" class="nav-item nav-link">Register</a>
+			</div>
+		</div>
+    </nav>
+	
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %} 
+	{% endif %}
+
+    {% block contenido %}{% endblock %}
+
+	{% bootstrap_javascript jquery='full' %}
+	<script type="text/javascript" src="{% static 'js/canvan.js' %}"></script>
+</body>
+</html>
